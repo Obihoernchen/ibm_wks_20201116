@@ -761,7 +761,7 @@ apiVersion: v1
 baseDomain: hX.rhaw.io
 compute:
 - hyperthreading: Enabled
-  name: node
+  name: worker
   replicas: 0
 controlPlane:
   hyperthreading: Enabled
