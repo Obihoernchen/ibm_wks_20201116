@@ -780,6 +780,10 @@ platform:
   none: {}
 pullSecret: pullSecret: '{"auths":{"bastion:5000": {"auth": "c3R1ZGVudDpyZWRoYXQ=","email": "you@example.com"}}}'
 sshKey: 'SSH PUBLIC KEY'
+additionalTrustBundle: |
+  -----BEGIN CERTIFICATE-----
+  INSERT YOUR REGISTRY CERTIFICATE !!!!!
+  -----END CERTIFICATE-----
 imageContentSources:
 - mirrors:
   - bastion:5000/ocp4/openshift4
