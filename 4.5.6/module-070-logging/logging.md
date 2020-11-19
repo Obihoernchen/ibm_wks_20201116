@@ -101,7 +101,7 @@ spec:
 ```
 
 ```
-[root@bastion ~]# oc create -f og-loging.yaml
+[root@bastion ~]# oc create -f og-logging.yaml
 operatorgroup.operators.coreos.com/openshift-logging created
 ```
 
