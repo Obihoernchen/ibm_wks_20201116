@@ -71,7 +71,7 @@ Then we need to apply this YAML file to our OCP4 Cluster:
 [root@bastion ~]# oc apply -f /root/htpasswd_cr.yaml
 ```
 
-**NOTE:** it is recommended to set one of the users created as _cluster_admin using the command `oc policy add-role-to-user cluster-admin <admin-user-name>`.
+**NOTE:** it is recommended to set one of the users created as _cluster_admin using the command `oc adm policy add-cluster-role-to-user cluster-admin <admin-user-name>`.
 
 ## Testing the htpasswd identity provider
 
@@ -196,7 +196,7 @@ system:admin
 ```
 ```sh
 [root@bastion ~]# oc config use-context /api-ocp4-hX.rhaw.io:6443/the-example-user
-Switched to context "/api-ocp4-hX.rhaw.io:6443/the-example-user".
+Switched to context "default/api-ocp4-hX.rhaw.io:6443/the-example-user".
 ```
 ```sh
 [root@bastion ~]# oc whoami
