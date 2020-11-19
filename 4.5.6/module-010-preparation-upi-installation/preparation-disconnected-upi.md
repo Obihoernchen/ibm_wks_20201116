@@ -6,7 +6,8 @@
 
 ## Fix firewall settings:
 
-The next steps will be done on bastion.hX.rhaw.io
+The next steps will be done on bastion.hX.rhaw.io  
+**Note: Replace the X in the hostname above with the number of your host everwhere in this document!**
 
 First we need to open firewall ports on the bastion machine:
 
@@ -514,7 +515,7 @@ The procedure will ask several questions that need to be answered:
 | Locality Name (eg, city)                              | Enter the name of your city.                                                                                                                                 |
 | Organization Name (eg, company)                       | Enter your company name.                                                                                                                                     |
 | Organizational Unit Name (eg, section)                | Enter your department name.                                                                                                                                  |
-| Common Name (eg, your name or your server’s hostname) | Enter the host name for the registry host. Ensure that your hostname is in DNS and that it resolves to the expected IP address.                              |
+| Common Name (eg, your name or your server’s hostname) | Enter the host name for the registry host. Ensure that your hostname is in DNS and that it resolves to the expected IP address. In our case: bastion.hX.rhaw.io  |
 | Email Address                                         | Enter your email address. For more information, see the [req](https://www.openssl.org/docs/man1.1.1/man1/req.html) description in the OpenSSL documentation. |
 
 After creating the registry we need to create a username and password for our registry
@@ -632,7 +633,7 @@ Now we need to add our registry on top of this file so it looks like this:
 ```
 {
   "auths": {
-    "bastion:5000": {
+    "bastion.hX.rhaw.io:5000": {
       "auth": "BGVtbYk3ZHAtqXs=",
       "email": ""you@example.com"
     },
@@ -656,7 +657,7 @@ Now we need to add our registry on top of this file so it looks like this:
 }
 ```
 
-Please change the values for bastion:5000 like Hostname/Port/auth/email accordingly.
+Please change the values for bastion.hX.rhaw.io:5000 like Hostname/Port/auth/email accordingly.
 
 For mirroring all the images we need now setup some environment variables:
 
@@ -669,7 +670,7 @@ Export the release version:
 Export the local registry name and host port:
 
 ```
-[root@bastion ~]# export LOCAL_REGISTRY='bastion:5000'
+[root@bastion ~]# export LOCAL_REGISTRY='bastion.hX.rhaw.io:5000'
 ```
 
 Export the local repository name:
@@ -715,10 +716,10 @@ The output seems to be similar to this one:
 ```
 imageContentSources:
 - mirrors:
-  - bastion:5000/ocp4/openshift4
+  - bastion.hX.rhaw.io:5000/ocp4/openshift4
   source: quay.io/openshift-release-dev/ocp-release
 - mirrors:
-  - bastion:5000/ocp4/openshift4
+  - bastion.hX.rhaw.io:5000/ocp4/openshift4
   source: quay.io/openshift-release-dev/ocp-v4.0-art-dev
 
 
@@ -731,10 +732,10 @@ metadata:
 spec:
   repositoryDigestMirrors:
   - mirrors:
-    - bastion:5000/ocp4/openshift4
+    - bastion.hX.rhaw.io:5000/ocp4/openshift4
     source: quay.io/openshift-release-dev/ocp-release
   - mirrors:
-    - bastion:5000/ocp4/openshift4
+    - bastion.hX.rhaw.io:5000/ocp4/openshift4
     source: quay.io/openshift-release-dev/ocp-v4.0-art-dev
 ```
 
@@ -778,7 +779,7 @@ networking:
   - 172.30.0.0/16
 platform:
   none: {}
-pullSecret: pullSecret: '{"auths":{"bastion:5000": {"auth": "c3R1ZGVudDpyZWRoYXQ=","email": "you@example.com"}}}'
+pullSecret: pullSecret: '{"auths":{"bastion.hX.rhaw.io:5000": {"auth": "c3R1ZGVudDpyZWRoYXQ=","email": "you@example.com"}}}'
 sshKey: 'SSH PUBLIC KEY'
 additionalTrustBundle: |
   -----BEGIN CERTIFICATE-----
@@ -786,10 +787,10 @@ additionalTrustBundle: |
   -----END CERTIFICATE-----
 imageContentSources:
 - mirrors:
-  - bastion:5000/ocp4/openshift4
+  - bastion.hX.rhaw.io:5000/ocp4/openshift4
   source: quay.io/openshift-release-dev/ocp-release
 - mirrors:
-  - bastion:5000/ocp4/openshift4
+  - bastion.hX.rhaw.io:5000/ocp4/openshift4
   source: quay.io/openshift-release-dev/ocp-v4.0-art-dev
 ```
 
