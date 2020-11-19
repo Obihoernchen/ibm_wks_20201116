@@ -124,10 +124,22 @@ frontend kubernetes_api
 backend kubernetes_api
     balance roundrobin
     option ssl-hello-chk
-    server bootstrap 192.168.100.10:6443 check
+    server bootstap 192.168.100.10:6443 check
     server master01 192.168.100.21:6443 check
     server master02 192.168.100.22:6443 check
     server master03 192.168.100.23:6443 check
+
+frontend machine_config
+    bind 0.0.0.0:22623
+    default_backend machine_config
+
+backend machine_config
+    balance roundrobin
+    option ssl-hello-chk
+    server bootstrap 192.168.100.10:22623 check
+    server master01 192.168.100.21:22623 check
+    server master02 192.168.100.22:22623 check
+    server master03 192.168.100.23:22623 check
 
 frontend router_https
     bind 0.0.0.0:443
@@ -140,8 +152,8 @@ backend router_https
     server node02 192.168.100.32:443 check
     server node03 192.168.100.33:443 check
     server node04 192.168.100.34:443 check
-    server node05 192.168.100.34:443 check
-    server node06 192.168.100.34:443 check
+    server node05 192.168.100.35:443 check
+    server node06 192.168.100.36:443 check
 
 frontend router_http
     mode http
@@ -155,6 +167,9 @@ backend router_http
     server node01 192.168.100.31:80 check
     server node02 192.168.100.32:80 check
     server node03 192.168.100.33:80 check
+    server node04 192.168.100.34:80 check
+    server node05 192.168.100.35:80 check
+    server node06 192.168.100.36:80 check
 ```
 
 Now we need to restart haproxy that our changes take place:
