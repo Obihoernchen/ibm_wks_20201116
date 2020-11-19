@@ -196,8 +196,11 @@ system:admin
 ```
 ```sh
 [root@bastion ~]# oc config use-context /api-ocp4-hX.rhaw.io:6443/the-example-user
-Switched to context "default/api-ocp4-hX.rhaw.io:6443/the-example-user".
+Switched to context "/api-ocp4-hX.rhaw.io:6443/the-example-user".
 ```
+
+Note: If the user you are switching to has a project you need to add this as a prefix. Just copy and paste the name string of `òc config get-contexts`.
+
 ```sh
 [root@bastion ~]# oc whoami
 the-example-user
