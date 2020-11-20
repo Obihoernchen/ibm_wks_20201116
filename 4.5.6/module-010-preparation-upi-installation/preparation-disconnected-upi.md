@@ -7,7 +7,7 @@
 ## Fix firewall settings:
 
 The next steps will be done on bastion.hX.rhaw.io  
-**Note: Replace the X in the hostname above with the number of your host everwhere in this document!**
+**Note: Replace the X in the hostname above with the number of your host everywhere in this document!**
 
 First we need to open firewall ports on the bastion machine:
 
